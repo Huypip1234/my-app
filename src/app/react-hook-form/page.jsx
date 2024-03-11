@@ -6,6 +6,7 @@ import UseSubComponent from "./components/UseSubComponent";
 import UseUiLib from "./components/UseUiLib";
 
 const ReactHookForm = () => {
+  // Đánh giá: Khó dùng vcl
   return (
     <div className="layout-container">
       <h1 className="text-[#ec5990] font-[600] text-[32px] text-center">
