@@ -6,6 +6,12 @@
 }
 
 @layer components {
+  .layout-container {
+    @apply w-[1280px] mx-auto my-[1rem];
+  }
+  .form-container {
+    @apply w-[30rem] mx-auto;
+  }
 }
 
 @layer utilities {
