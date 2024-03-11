@@ -42,7 +42,7 @@ const Basic = () => {
       <form
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
         onSubmit={handleSubmit(onSubmit)}
-        className="p-6 bg-white rounded shadow-md"
+        className="p-6 bg-white rounded shadow-md w-[30rem] mx-auto"
       >
         <input
           defaultValue="test"
