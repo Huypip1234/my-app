@@ -14,7 +14,7 @@ const counterReducer = (state = 0, action) => {
 const printReducer = (state = "...", action) => {
   switch (action.type) {
     case "PRINT_SOMETHING":
-      return action.payload;
+      return action.payload.title;
     default:
       return state;
   }
