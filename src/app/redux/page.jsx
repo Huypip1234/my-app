@@ -1,15 +1,16 @@
 "use client";
 
 import React from "react";
-import { Provider } from "react-redux";
-import { store } from "./store";
+import ReduxCore from "./redux-core/page";
+import ReduxToolKit from "./redux-toolkit/page";
 
-const Redux = () => {
+const page = () => {
   return (
-    <Provider store={store}>
-      <div>page</div>
-    </Provider>
+    <div>
+      <ReduxCore />
+      <ReduxToolKit />
+    </div>
   );
 };
 
-export default Redux;
+export default page;
