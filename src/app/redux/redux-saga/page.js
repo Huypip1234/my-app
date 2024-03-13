@@ -5,6 +5,15 @@ import store from "./store";
 import { fetchPostsRequest } from "./slice";
 
 // Giống Thunk nhưng Pro hơn (test, effect (take, put, call,...), chống spam api (generate func), loading, error, ...)
+
+/* ake: Lắng nghe một action cụ thể.
+put: Gửi một action.
+call: Gọi một hàm bất đồng bộ.
+fork: Chạy một Saga mới.
+select: Lấy dữ liệu từ store.
+race: Chờ đợi kết quả của một trong nhiều tác vụ bất đồng bộ.
+takeEvery: Lắng nghe tất cả các action của một loại cụ thể.
+takeLatest: Lắng nghe action mới nhất của một loại cụ thể. */
 const SubReduxSaga = () => {
   const dispatch = useDispatch();
   const { posts, loading, error } = useSelector((state) => state); // saga có thêm loading và error
