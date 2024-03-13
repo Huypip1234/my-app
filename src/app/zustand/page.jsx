@@ -1,11 +1,12 @@
-'use client'
+'use client';
 
-import { Button } from '@material-ui/core'
-import React from 'react'
-import useStore from './store'
+import { Button } from '@material-ui/core';
+import React from 'react';
+import useStore from './store';
 
 const Zustand = () => {
-  const { count, increase } = useStore()
+  const { count, increase } = useStore();
+
   return (
     <div className='layout-container'>
       <div className='form-container flex flex-col items-center gap-[1rem]'>
@@ -16,7 +17,7 @@ const Zustand = () => {
         </Button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Zustand
+export default Zustand;
