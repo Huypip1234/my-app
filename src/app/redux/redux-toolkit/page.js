@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { Button } from "@material-ui/core";
-import store from "./store";
-import rootReducer from "./reducer";
+import store, { persistor } from "./store";
+import { counterReducer, fetchPosts } from "./reducer";
+import { PersistGate } from "redux-persist/integration/react";
 
 const SubReduxCore = () => {
   const counter = useSelector((state) => state.reducer1);
+  const posts = useSelector((state) => state.reducer2);
   const dispatch = useDispatch();
 
   return (
@@ -18,7 +20,7 @@ const SubReduxCore = () => {
         <Button
           className="!bg-[rgba(112,76,182,0.1)] !text-[rgb(112,76,182)]"
           onClick={() => {
-            dispatch(rootReducer.actions.increment(5));
+            dispatch(counterReducer.actions.increment(5));
           }}
         >
           Increase
@@ -26,12 +28,21 @@ const SubReduxCore = () => {
         <Button
           className="!bg-[rgba(112,76,182,0.1)] !text-[rgb(112,76,182)]"
           onClick={() => {
-            dispatch(rootReducer.actions.decrement(5));
+            dispatch(counterReducer.actions.decrement(5));
           }}
         >
           Decrease
         </Button>
+        <Button
+          className="!bg-[rgba(112,76,182,0.1)] !text-[rgb(112,76,182)]"
+          onClick={() => {
+            dispatch(fetchPosts());
+          }}
+        >
+          Fetch post
+        </Button>
       </div>
+      <h4 className="text-[rgb(112,76,182)]">{posts}</h4>
     </div>
   );
 };
@@ -39,7 +50,9 @@ const SubReduxCore = () => {
 const ReduxToolKit = () => {
   return (
     <Provider store={store}>
-      <SubReduxCore />
+      <PersistGate loading={null} persistor={persistor}>
+        <SubReduxCore />
+      </PersistGate>
     </Provider>
   );
 };

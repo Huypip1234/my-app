@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 const counterReducer = (state = 0, action) => {
   switch (action.type) {
     case "INCREMENT":
-      return state + action.payload;
+      return state + action.payload; // immutation: ko đc viết thay đổi trực tiếp state -> dễ bug
     case "DECREMENT":
       return state - action.payload;
     default:
