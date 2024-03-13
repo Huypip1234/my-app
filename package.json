@@ -22,7 +22,8 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^3.1.0",
-    "saga": "^4.0.0-alpha"
+    "saga": "^4.0.0-alpha",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",
