@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "format": "prettier --write .",
-    "commit": "commitlint -E $GIT_PARAMS"
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@commitlint/cli": "^19.1.0",
