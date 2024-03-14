@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { Provider, useDispatch, useSelector } from "react-redux";
-import { Button } from "@material-ui/core";
-import store from "./store";
-import { fetchPostsRequest } from "./slice";
+import React, { useEffect } from 'react';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { Button } from '@material-ui/core';
+import store from './store';
+import { fetchPostsRequest } from './slice';
 
 // Giống Thunk nhưng Pro hơn (test, effect (take, put, call,...), chống spam api (generate func), loading, error, ...)
 
@@ -21,10 +21,10 @@ const SubReduxSaga = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   return (
-    <div className="form-container my-[1rem] flex flex-col items-center gap-[1rem]">
-      <h1 className="text-[#86d46b] text-[36px] font-[500]">Redux Saga</h1>
+    <div className='form-container my-[1rem] flex flex-col items-center gap-[1rem]'>
+      <h1 className='text-[#86d46b] text-[36px] font-[500]'>Redux Saga</h1>
       {/* <h4 className="text-[#86d46b]">{counter}</h4> */}
-      <div className="flex items-center gap-[1rem]">
+      <div className='flex items-center gap-[1rem]'>
         {/* <Button
           className="!bg-[#ebedf0] !text-[#86d46b]"
           onClick={() => {
@@ -42,7 +42,7 @@ const SubReduxSaga = () => {
           Decrease
         </Button> */}
         <Button
-          className="!bg-[#ebedf0] !text-[#86d46b]"
+          className='!bg-[#ebedf0] !text-[#86d46b]'
           onClick={() => {
             dispatch(fetchPostsRequest());
           }}

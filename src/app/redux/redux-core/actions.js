@@ -1,13 +1,13 @@
 export const increaseCount = (data) => {
   return {
-    type: "INCREMENT",
+    type: 'INCREMENT',
     payload: data,
   };
 };
 
 export const decreaseCount = (data) => {
   return {
-    type: "DECREMENT",
+    type: 'DECREMENT',
     payload: data,
   };
 };
@@ -18,10 +18,10 @@ export const printSomething = () => {
   // thunk tự nhận ra funtion -> tự gọi dispatch phát nữa
   // thunk giúp action có thể trả về function thay vì object như bình thường
   return async (dispatch) => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+    const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
     const data = await res.json();
     dispatch({
-      type: "PRINT_SOMETHING",
+      type: 'PRINT_SOMETHING',
       payload: data,
     });
   };

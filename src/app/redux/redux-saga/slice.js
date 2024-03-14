@@ -1,8 +1,8 @@
 // slice.js
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const postsSlice = createSlice({
-  name: "posts",
+  name: 'posts',
   initialState: { posts: [], loading: false, error: null },
   reducers: {
     fetchPostsRequest: (state) => {

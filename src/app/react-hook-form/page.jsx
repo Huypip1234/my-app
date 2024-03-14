@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import React from 'react'
-import Basic from './components/Basic'
-import UseSubComponent from './components/UseSubComponent'
-import UseUiLib from './components/UseUiLib'
+import React from 'react';
+import Basic from './components/Basic';
+import UseSubComponent from './components/UseSubComponent';
+import UseUiLib from './components/UseUiLib';
 
 const ReactHookForm = () => {
   // Đánh giá: Khó dùng vcl
@@ -16,7 +16,7 @@ const ReactHookForm = () => {
       <UseSubComponent />
       <UseUiLib />
     </div>
-  )
-}
+  );
+};
 
-export default ReactHookForm
+export default ReactHookForm;

@@ -1,11 +1,11 @@
 // store.js
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { counterReducer, postReducer } from "./reducer";
-import { persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { counterReducer, postReducer } from './reducer';
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
 };
 

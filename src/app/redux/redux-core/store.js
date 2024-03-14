@@ -1,9 +1,9 @@
-import { applyMiddleware, createStore } from "redux";
-import allReducers from "./reducer";
-import { thunk } from "redux-thunk"; // Support for action return function instead of object (async action)
-import { persistStore, persistReducer } from "redux-persist"; // Support for saving state after refresh (save to local storage)
-import storage from "redux-persist/lib/storage"; // local storage
-import { composeWithDevTools } from "redux-devtools-extension"; // Support for Redux DevTools
+import { applyMiddleware, createStore } from 'redux';
+import allReducers from './reducer';
+import { thunk } from 'redux-thunk'; // Support for action return function instead of object (async action)
+import { persistStore, persistReducer } from 'redux-persist'; // Support for saving state after refresh (save to local storage)
+import storage from 'redux-persist/lib/storage'; // local storage
+import { composeWithDevTools } from 'redux-devtools-extension'; // Support for Redux DevTools
 
 /* const middleware = (store) => {
   return (next) => {
@@ -25,9 +25,9 @@ const customMiddleware = (store) => (next) => (action) => {
 };
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
-  whitelist: ["counter"], // only counter will be persisted (saved to local storage)
+  whitelist: ['counter'], // only counter will be persisted (saved to local storage)
   // blacklist (nguoc lai)
 };
 

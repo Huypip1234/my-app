@@ -1,19 +1,19 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
 const counterReducer = (state = 0, action) => {
   switch (action.type) {
-    case "INCREMENT":
+    case 'INCREMENT':
       return state + action.payload; // immutation: ko đc viết thay đổi trực tiếp state -> dễ bug
-    case "DECREMENT":
+    case 'DECREMENT':
       return state - action.payload;
     default:
       return state;
   }
 };
 
-const printReducer = (state = "...", action) => {
+const printReducer = (state = '...', action) => {
   switch (action.type) {
-    case "PRINT_SOMETHING":
+    case 'PRINT_SOMETHING':
       return action.payload.title;
     default:
       return state;

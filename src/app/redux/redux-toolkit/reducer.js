@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const counterReducer = createSlice({
-  name: "rootReducer",
+  name: 'rootReducer',
   initialState: 0,
   // Phải viết theo kieu mutation (đã tích hợp sẵn immer bên trong)
   //name/reducers -> vd: rootReducer/INCREMENT
@@ -18,15 +18,15 @@ const counterReducer = createSlice({
   },
 });
 
-export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
   const data = await response.json();
   return data;
 });
 
 const postReducer = createSlice({
-  name: "posts",
-  initialState: "...",
+  name: 'posts',
+  initialState: '...',
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
