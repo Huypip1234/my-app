@@ -1,8 +1,11 @@
 // (Lôi ở galasy + các dự án khác sang + chat Gpt :))
 // Next đã config sẵn cơ bản, mỗi tội k có hook -> phải cài plugin bên ngoài
+// cách config nhanh: thêm "airbnb" vào extends :)) (hoặc google (eslint-config-google), standard (eslint-config-standard), ...)
 {
-  "extends": ["next/core-web-vitals", "prettier"],
+  "extends": ["next/core-web-vitals"], // Tự thêm các eslint có sẵn mà k cần config thủ công
+  "plugins": ["prettier"], // Mở rộng thêm các eslint
   "rules": {
-    "no-undef": "error"
+    "no-undef": "error",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
   }
 }
