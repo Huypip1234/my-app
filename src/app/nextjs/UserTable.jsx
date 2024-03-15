@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Table } from 'antd';
 import useMounted from '@/hooks/useMounted';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { Button } from 'antd';
 
 const UserTable = ({ data }) => {
   const { isMounted } = useMounted();
@@ -43,18 +44,26 @@ const UserTable = ({ data }) => {
   return (
     <>
       {isMounted ? (
-        <Table
-          loading={isLoading}
-          onChange={onChange}
-          rowKey={'id'}
-          bordered
-          dataSource={data}
-          columns={columns}
-          pagination={{
-            pageSize: 5,
-            total: 20,
-          }}
-        />
+        <>
+          <div className='flex justify-end p-[1rem]'>
+            <Button type='primary' className='bg-blue-500 '>
+              Create new
+            </Button>
+          </div>
+
+          <Table
+            loading={isLoading}
+            onChange={onChange}
+            rowKey={'id'}
+            bordered
+            dataSource={data}
+            columns={columns}
+            pagination={{
+              pageSize: 5,
+              total: 20,
+            }}
+          />
+        </>
       ) : (
         'Loading...'
       )}
