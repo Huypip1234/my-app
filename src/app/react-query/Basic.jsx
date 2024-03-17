@@ -8,17 +8,13 @@ const Basic = () => {
   const queryClient = useQueryClient();
 
   // Queries
-  const query = useQuery({
+  const { isPending, error, data, isFetching } = useQuery({
     queryKey: ['todos'],
     queryFn: () =>
       axios
         .get('https://jsonplaceholder.typicode.com/todos')
         .then((res) => res.data),
   });
-
-  useEffect(() => {
-    console.log(query);
-  }, [query]);
 
   // Mutations;
   const mutation = useMutation({
@@ -31,6 +27,10 @@ const Basic = () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] });
     },
   });
+
+  if (isPending) return 'Loading...';
+
+  if (error) return 'An error has occurred: ' + error.message;
 
   return (
     <div className='form-container flex flex-col items-center my-[1rem] gap-[1rem]'>
@@ -49,11 +49,15 @@ const Basic = () => {
         Add Todo
       </Button>
       <div>
-        <ul>
-          {query.data?.map((todo) => (
-            <li key={todo.id}>{todo.title}</li>
-          ))}
-        </ul>
+        {!isFetching ? (
+          <ul>
+            {data?.map((todo) => (
+              <li key={todo.id}>{todo.title}</li>
+            ))}
+          </ul>
+        ) : (
+          'Fetching...'
+        )}
       </div>
     </div>
   );
