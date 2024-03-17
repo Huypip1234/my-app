@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { axiosClient, responseInterceptorData } from './config';
-import { Button } from 'antd';
+import { Button } from '@material-ui/core';
 
 const Axios = () => {
   const [data, setData] = useState([]);
@@ -34,8 +34,7 @@ const Axios = () => {
     <div className='form-container my-[1rem] flex flex-col items-center gap-[1rem]'>
       <h1 className='text-[#671ddf] text-[36px] font-[600]'>Axios</h1>
       <Button
-        type='primary'
-        className='bg-blue-500 '
+        className='!bg-[#671ddf] !text-[white]'
         onClick={fetchDataWithInterceptor}
       >
         Fetch Again!
