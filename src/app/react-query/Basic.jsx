@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  useQueries,
+} from '@tanstack/react-query';
 import axios from 'axios';
 import { Button } from '@material-ui/core';
 import Link from 'next/link';
@@ -13,11 +18,48 @@ const Basic = () => {
     queryKey: ['todos'],
     retry: 1, // goi lai 1 lan neu bi loi (mac dinh 3 lan)
     retryDelay: 1000, // thoi gian giua cac lan goi lai
-    gcTime: 5 * 60 * 1000, // thoi gian xoa cache: 5 phut (tinh bang miliseconds, default 5 phut)
     refetchOnWindowFocus: true, // => khi focus vao tab thi se goi lai api (default true)
-    queryFn: () =>
-      axios.get('http://localhost:3002/todo').then((res) => res.data),
+    gcTime: 5 * 60 * 1000, // thoi gian xoa cache: 5 phut (tinh bang miliseconds, default 5 phut)
+    staleTime: 3000, // khoang thoi gian coi data hien tai la moi -> ko cho fetch lai data (default 0ms, infinity: luon la moi)
+    enabled: true, // false => tat query ko cho fetch
+    queryFn: async (data) => {
+      console.log('func data: ', data); // lay dc queryKey
+      return axios.get('http://localhost:3002/todo').then((res) => res.data);
+    },
   });
+
+  // // Queries: Nhieu Query
+  // const queries = useQueries({
+  //   // => tra ve 1 array cac query
+  //   queries: [
+  //     {
+  //       queryKey: ['todos'],
+  //       queryFn: () =>
+  //         axios
+  //           .get('https://jsonplaceholder.typicode.com/todos')
+  //           .then((res) => res.data),
+  //     },
+  //     {
+  //       queryKey: ['todos2'],
+  //       queryFn: () =>
+  //         axios
+  //           .get('https://jsonplaceholder.typicode.com/todos')
+  //           .then((res) => res.data),
+  //     },
+  //   ],
+  //   // option
+  //   combine: (data) => {
+  //     // => gop cac data lai thanh 1 object tuy chinh
+  //     return {
+  //       data: data.map((d) => d.data),
+  //       isPending: data.map((d) => d.isPending),
+  //     };
+  //   },
+  // });
+
+  // useEffect(() => {
+  //   console.log('queries', queries);
+  // }, [queries]);
 
   // Mutations;
   const mutation = useMutation({
