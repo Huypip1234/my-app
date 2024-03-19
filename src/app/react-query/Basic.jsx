@@ -22,6 +22,10 @@ const Basic = () => {
     gcTime: 5 * 60 * 1000, // thoi gian xoa cache: 5 phut (tinh bang miliseconds, default 5 phut)
     staleTime: 3000, // khoang thoi gian coi data hien tai la moi -> ko cho fetch lai data (default 0ms, infinity: luon la moi)
     enabled: true, // false => tat query ko cho fetch
+    placeholderData: (prevData) => {
+      console.log(prevData);
+      return 'sadsad'; // Giữ nguyên UI khi refresh trang (đíu hiểu lắm)
+    },
     queryFn: async (data) => {
       console.log('func data: ', data); // lay dc queryKey
       return axios.get('http://localhost:3002/todo').then((res) => res.data);
