@@ -15,6 +15,18 @@ const Navigation = () => {
   // Access the client
   const queryClient = useQueryClient();
 
+  // get from store
+  const otherData = queryClient.getQueryData(['testBase']);
+  // Ngoai ra:
+  // getQueryCache(['']) => lay tat ca data trong cache
+  // getQueriesData() => lay tat ca query
+  // isFetching(['']) => kiem tra xem query co dang fetch ko
+  // ...
+  // Lấy đc cả data ở mutation (cứ truyền key là đc)
+  useEffect(() => {
+    console.log('other Data haha', otherData);
+  }, [otherData]);
+
   // Queries
   const { isPending, error, data, isFetching } = useQuery({
     queryKey: ['todos', page],
@@ -80,6 +92,11 @@ const Navigation = () => {
         ) : (
           'Fetching...'
         )}
+      </div>
+
+      <div>
+        <span className='text-red-500'>Data in Basic component: </span>{' '}
+        {otherData?.map((todo) => todo.title)}
       </div>
     </div>
   );

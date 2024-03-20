@@ -15,7 +15,7 @@ const Basic = () => {
 
   // Queries
   const { isPending, error, data, isFetching } = useQuery({
-    queryKey: ['todos'],
+    queryKey: ['testBase'],
     retry: 1, // goi lai 1 lan neu bi loi (mac dinh 3 lan)
     retryDelay: 1000, // thoi gian giua cac lan goi lai
     refetchOnWindowFocus: true, // => khi focus vao tab thi se goi lai api (default true)
@@ -69,11 +69,21 @@ const Basic = () => {
   const mutation = useMutation({
     mutationFn: () =>
       axios // post api
-        .get('https://jsonplaceholder.typicode.com/todos')
+        .post('http://localhost:3002/todo', {
+          id: Math.random() * 1000,
+          title: 'a titleđ',
+          views: 100,
+        })
         .then((res) => res.data),
     onSuccess: () => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ['todos'] });
+      console.log('onSuccess');
+    },
+    onError: (error) => {
+      console.log('onError', error);
+    },
+    onSettled: (data, error) => {
+      // => chay sau khi onSuccess hoac onError (giong finally)
+      queryClient.invalidateQueries({ queryKey: ['testBase'] });
     },
   });
 
@@ -102,7 +112,7 @@ const Basic = () => {
         }}
         className='!bg-[rgb(244,63,94)] !text-white'
       >
-        Add Todo
+        Post
       </Button>
       <div>
         {!isFetching ? (
