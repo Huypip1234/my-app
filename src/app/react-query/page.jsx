@@ -14,7 +14,7 @@ const ReactQuery = () => {
     <QueryClientProvider client={queryClient}>
       <Basic />
       <Navigation />
-      {/* <UseInfinite /> */}
+      <UseInfinite />
       <ReactQueryDevtools buttonPosition='bottom-left' initialIsOpen={false} />
     </QueryClientProvider>
   );

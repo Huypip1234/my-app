@@ -64,6 +64,7 @@ const Navigation = () => {
             setPage((prev) => prev + 1);
           }}
           className='!bg-[rgb(244,63,94)] !text-white'
+          disabled={isFetching} // => khi dang fetch thi ko cho click
         >
           Next Page
         </Button>
