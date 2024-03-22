@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import ReduxCore from './redux-core/page';
-import ReduxToolKit from './redux-toolkit/page';
-import ReduxSaga from './redux-saga/page';
+import ReduxCore from './redux-core';
+import ReduxToolKit from './redux-toolkit';
+import ReduxSaga from './redux-saga';
 
 const page = () => {
   return (
