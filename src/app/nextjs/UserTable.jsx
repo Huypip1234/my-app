@@ -25,6 +25,8 @@ const UserTable = ({ userData, action, todoData }) => {
   const { isMounted } = useMounted();
   const [isLoading, setIsLoading] = useState(true);
 
+  const [checkingCache, setCheckingCache] = useState(1);
+
   const pathname = usePathname();
   const router = useRouter();
 
@@ -116,6 +118,18 @@ const UserTable = ({ userData, action, todoData }) => {
       )}
       <h2>TODO DATA</h2>
       {JSON.stringify(todoData)}
+
+      <h2 className='mt-[3rem]'>CHECKING CACHE</h2>
+      <p>{checkingCache}</p>
+      <Button
+        onClick={() => {
+          setCheckingCache(checkingCache + 1);
+        }}
+        type='primary'
+        className='bg-red-500 '
+      >
+        Increase
+      </Button>
     </>
   );
 };
