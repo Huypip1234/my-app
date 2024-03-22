@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { Button } from '@material-ui/core';
 import store, { persistor } from './store';

@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  useQueries,
-} from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { Button } from '@material-ui/core';
-import Link from 'next/link';
 
 const Navigation = () => {
   const [page, setPage] = useState(1);

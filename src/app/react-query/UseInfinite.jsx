@@ -1,11 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  useQueries,
-  useInfiniteQuery,
-} from '@tanstack/react-query';
+import React from 'react';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { Button } from '@material-ui/core';
 

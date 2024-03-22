@@ -1,10 +1,5 @@
-import React, { useEffect } from 'react';
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  useQueries,
-} from '@tanstack/react-query';
+import React from 'react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { Button } from '@material-ui/core';
 import Link from 'next/link';
@@ -81,6 +76,7 @@ const Basic = () => {
     onError: (error) => {
       console.log('onError', error);
     },
+    // eslint-disable-next-line no-unused-vars
     onSettled: (data, error) => {
       // => chay sau khi onSuccess hoac onError (giong finally)
       queryClient.invalidateQueries({ queryKey: ['testBase'] });

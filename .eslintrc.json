@@ -6,6 +6,7 @@
   "plugins": ["prettier"], // Mở rộng thêm các eslint
   "rules": {
     "no-undef": "error",
-    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "no-unused-vars": "error"
   }
 }
