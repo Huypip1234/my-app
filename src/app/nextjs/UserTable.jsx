@@ -3,10 +3,25 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'antd';
 import useMounted from '@/hooks/useMounted';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Button } from 'antd';
+import axios from 'axios';
 
-const UserTable = ({ data }) => {
+// Chỉ hỗ trợ ở page router -> Viết vô cho biết
+export async function getServerSideProps(context) {
+  console.log(context);
+  const { id } = context.query;
+  const data = await fetch(`http://localhost:3002/todo/${id}`);
+  const post = await data.json();
+
+  return {
+    props: {
+      post: post,
+    },
+  };
+}
+
+const UserTable = ({ userData, action, todoData }) => {
   const { isMounted } = useMounted();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -14,8 +29,8 @@ const UserTable = ({ data }) => {
   const router = useRouter();
 
   useEffect(() => {
-    data && setIsLoading(false);
-  }, [data]);
+    userData && setIsLoading(false);
+  }, [userData]);
 
   const columns = [
     {
@@ -45,9 +60,41 @@ const UserTable = ({ data }) => {
     <>
       {isMounted ? (
         <>
-          <div className='flex justify-end p-[1rem]'>
-            <Button type='primary' className='bg-blue-500 '>
+          <div className='flex justify-end p-[1rem] gap-[0.5rem]'>
+            <Button
+              onClick={async () => {
+                await axios.post('http://localhost:3002/todo', {
+                  id: Math.floor(Math.random() * 100) + 1 + '',
+                  title: 'New todo',
+                  view: 0,
+                });
+                action();
+              }}
+              type='primary'
+              className='bg-blue-500 '
+            >
               Create new
+            </Button>
+            <Button
+              onClick={async () => {
+                await axios.delete(
+                  `http://localhost:3002/todo/${todoData[todoData.length - 1].id}`
+                );
+                action();
+              }}
+              type='primary'
+              className='bg-red-500 '
+            >
+              Delete
+            </Button>
+            <Button
+              onClick={async () => {
+                action();
+              }}
+              type='primary'
+              className='bg-green-500 '
+            >
+              Revalidate
             </Button>
           </div>
 
@@ -56,7 +103,7 @@ const UserTable = ({ data }) => {
             onChange={onChange}
             rowKey={'id'}
             bordered
-            dataSource={data}
+            dataSource={userData}
             columns={columns}
             pagination={{
               pageSize: 5,
@@ -65,8 +112,10 @@ const UserTable = ({ data }) => {
           />
         </>
       ) : (
-        'Loading...'
+        'Mounting Antd...'
       )}
+      <h2>TODO DATA</h2>
+      {JSON.stringify(todoData)}
     </>
   );
 };
